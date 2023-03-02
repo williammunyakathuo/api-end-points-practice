@@ -89,6 +89,20 @@ server.get('/users/:id', (req, res)=>{
   console.log(user)
 })
 
+server.put('/users', (req, res)=>{
+  const userdetails = req.body;
+  Users.map(user =>{
+    if (user.id === userdetails.id){
+      user.name = userdetails.name
+      user.profession = userdetails.profession
+      return user
+    }else{
+      return user
+    }
+  })
+  res.json(Users)
+})
+
 server.delete('/users/:id', (req, res)=>{
   const {id} = req.params;
   console.log(id);
